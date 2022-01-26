@@ -1,15 +1,18 @@
 #!/bin/bash
 
-# start ssh server
-/etc/init.d/ssh start
 
-# format namenode
-$HADOOP_HOME/bin/hdfs namenode -format
 
-# start hadoop
-$HADOOP_HOME/sbin/start-dfs.sh
-$HADOOP_HOME/sbin/start-yarn.sh
-$HADOOP_HOME/sbin/mr-jobhistory-daemon.sh start historyserver
+# start hadoop master container
+sudo docker rm -f hadoop-master &> /dev/null
+echo "start hadoop-master container..."
+sudo docker run -itd \
+                --net=hadoop \
+                -p 50070:50070 \
+                -p 8088:8088 \
+                --name hadoop-master \
+                --hostname hadoop-master \
+                kiwenlau/hadoop:1.0 &> /dev/null
 
-# keep container running
-tail -f /dev/null
+
+# get into hadoop master container
+sudo docker exec -it hadoop-master bash
