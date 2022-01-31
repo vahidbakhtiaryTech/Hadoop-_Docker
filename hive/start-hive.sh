@@ -14,7 +14,7 @@ sudo docker run -itd \
                 -p 9084:9084 \
                 --name hadoop-master \
                 --hostname hadoop-master \
-                vahidbakhtiaryinfo/hive:3.0 &> /dev/null
+                vahidbakhtiaryinfo/hive:2.0 &> /dev/null
 
 
 # get into hadoop master container
