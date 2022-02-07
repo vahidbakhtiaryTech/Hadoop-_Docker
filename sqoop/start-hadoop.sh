@@ -10,6 +10,9 @@ sudo docker run -itd \
                 -p 50070:50070 \
                 -p 8088:8088 \
                 -p 9870:9870 \
+                -p 9083:9083  \
+                -p 10000:10000 \
+                -p 10002:10002  \
                 --name hadoop-master \
                 --hostname hadoop-master \
                 vahidbakhtiaryinfo/sqoop:2.0 &> /dev/null
